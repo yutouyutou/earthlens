@@ -1,0 +1,44 @@
+@import "tailwindcss";
+@import 'mapbox-gl/dist/mapbox-gl.css';
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  overflow: hidden;
+}
+
+.mapboxgl-popup-content {
+  background: #1a1a2e !important;
+  color: #e0e0e0 !important;
+  border: 1px solid #333 !important;
+  border-radius: 12px !important;
+  padding: 0 !important;
+}
+
+.camera-marker {
+  animation: marker-pulse 2s ease-in-out infinite;
+}
+
+@keyframes marker-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
+
+.camera-marker:hover {
+  animation: none;
+  opacity: 1;
+  transform: scale(1.5);
+}
