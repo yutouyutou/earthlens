@@ -3,8 +3,16 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Category {
+  BEACH
+  CITY
+  NATURE
+  EVENT
 }
 
 model CameraSource {
@@ -15,7 +23,7 @@ model CameraSource {
   lng          Float
   city         String
   country      String
-  category     String     @default("CITY")
+  category     Category   @default(CITY)
   streamUrl    String
   thumbnailUrl String?
   timezone     String     @default("UTC")
